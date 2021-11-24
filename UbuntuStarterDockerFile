@@ -3,6 +3,7 @@ FROM ubuntu
 
 MAINTAINER Snehasish Sen <sen.snehasish02@gmail.com>
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 
 # install tools
@@ -14,21 +15,6 @@ RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.v
 # Setup my configurations
 RUN git clone https://github.com/snehasish02/Utils.git /home/ && \
     cd /home/ && \
-    ln -s /home/Utils/.vimrc .vimrc && \
-    ln -s /home/Utils/.gdbinit .gdbinit && \
-    ln -s /home/Utils/.ctags .ctags
-
-
-
-# clone python source
-# RUN cd /home &&
-#     git clone https://github.com/python/cpython &&
-#     cd cpython &&
-#     git checkout tags/v3.9.0b1 -b v3.9.0b1
-#
-#
-# WORKDIR /home/cpython
-
-
-
-
+    ln -sf /home/Utils/.vimrc .vimrc && \
+    ln -sf /home/Utils/.gdbinit .gdbinit && \
+    ln -sf /home/Utils/.ctags .ctags
