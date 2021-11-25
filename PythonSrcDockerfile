@@ -1,0 +1,19 @@
+# Get the ubuntu base image
+FROM snehasish02/ubuntu-starter:latest
+
+MAINTAINER Snehasish Sen <sen.snehasish02@gmail.com>
+ENV DEBIAN_FRONTEND=noninteractive
+
+# clone python source
+RUN cd /home && \
+    git clone https://github.com/python/cpython && \
+    cd cpython && \
+    git checkout tags/v3.9.0b1 -b v3.9.0b1 && \
+    ctags -R
+
+
+WORKDIR /home/cpython
+
+
+
+
